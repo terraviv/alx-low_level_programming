@@ -8,7 +8,7 @@
 int main(void)
 {
 	int x1;
-	unsigned long int x1, x2, next, total;
+	long int x1, x2, next, total;
 
 	x1 = 1;
 	x2 = 2;
@@ -25,7 +25,7 @@ int main(void)
 		x2 = next;
 	}
 
-	printf("%lu\n", total);
+	printf("%ld\n", total);
 
 	return (0);
 }
