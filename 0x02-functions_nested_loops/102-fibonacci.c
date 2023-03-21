@@ -7,14 +7,13 @@
 int main(void)
 {
 	int count;
-	unsigned long x1 = 0,
-	unsigned long x2 = 1;
-	unsigned long total;
-
+	long int  x1,x2,total;
+	x1=0;
+	x2=1;
 	for (count = 0; count < 50; count++)
 	{
 		total = x1 + x2;
-		printf("%lu", total);
+		printf("%ld", total);
 		x1 = x2;
 		x2 = total;
 		if (count == 49)
