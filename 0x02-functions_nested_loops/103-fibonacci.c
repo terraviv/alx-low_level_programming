@@ -1,31 +1,31 @@
 #include <stdio.h>
 
 /**
- * main - finds and prints the sum of the even-valued terms
- * followed by a new line
- * Return: Always 0 (Success)
+ * main - even valued fibo.
+ * Return: Always 0.
  */
 int main(void)
 {
 	int x1;
-	long int x1, x2, next, total;
+	unsigned long int x2, x3, x4, total;
 
-	x1 = 1;
-	x2 = 2;
+	x2 = 1;
+	x3 = 2;
 	total = 0;
 
-	for (i = 1; i <= 33; ++i)
+	for (x1 = 1; x1 <= 33; ++x1)
 	{
-		if (x1 < 4000000 && (x1 % 2) == 0)
+		if (x2 < 4000000 && (x2 % 2) == 0)
 		{
-			total = total + x1;
+			total = total + x2;
 		}
-		next = x1 + x2;
-		x1 = x2;
-		x2 = next;
+		x4 = x2 + x3;
+		x2 = x3;
+		x3 = x4;
 	}
 
-	printf("%ld\n", total);
+	printf("%lu\n", total);
 
 	return (0);
 }
+
