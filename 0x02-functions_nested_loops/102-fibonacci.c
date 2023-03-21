@@ -2,7 +2,7 @@
 
 /**
  * main - show first 50 Fibonacci numbers.
- * Return: Always 0.
+ * Return: 0.
  */
 int main(void)
 {
@@ -15,15 +15,12 @@ int main(void)
 	{
 		total = x1 + x2;
 		printf("%lu", total);
-
 		x1 = x2;
 		x2 = total;
-
 		if (count == 49)
 			printf("\n");
 		else
 			printf(", ");
 	}
-
 	return (0);
 }
