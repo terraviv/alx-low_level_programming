@@ -1,41 +1,50 @@
 #include <stdio.h>
 
 /**
- * main - Prints the first 98 Fibonacci numbers
+ *  main - show the first 98 Fibonacci numbers.
  *
- * Return: Always 0 (Success)
+ *  Return: 0.
  */
 int main(void)
 {
-	unsigned long int bef = 1;
-	unsigned long int aft = 2;
-	unsigned long int num = 1000000000;
-	unsigned long int x1, x2, y1, y2, p;
+	int c, z1, z2;
+	long int x1, x2, fn, y2, x3, x4;
 
-	printf("%lu", bef);
-
-	for (p = 1; p < 91; p++)
+	x1 = 1;
+	x2 = 2;
+	z1 =  z2 = 1;
+	printf("%ld, %ld", x1, x2);
+	for (c = 0; c < 96; c++)
 	{
-		printf(", %lu", aft);
-		aft += bef;
-		bef = aft - bef;
+		if (z1)
+		{
+			fn = x1 + x2;
+			printf(", %ld", fn);
+			x1 = x2;
+			x2 = fn;
+		}
+		else
+		{
+			if (z2)
+			{
+				x3 = x1 % 1000000000;
+				x4 = x2 % 1000000000;
+				x1 = x1 / 1000000000;
+				x2 = x2 / 1000000000;
+				z2 = 0;
+			}
+			y2 = (x3 + x4);
+			fn = x1 + x2 + (y2 / 1000000000);
+			printf(", %ld", fn);
+			printf("%ld", y2 % 1000000000);
+			x1 = x2;
+			x3 = x4;
+			x2 = fn;
+			x4 = (y2 % 1000000000);
+		}
+		if (((x1 + x2) < 0) && z1 == 1)
+			z1 = 0;
 	}
-
-	x1 = bef / num;
-	x2 = bef % num;
-	y1 = aft / num;
-	y2 = aft % num;
-
-	for (p = 92; p < 99; ++p)
-	{
-		printf(", %lu", y1 + (y2 / num));
-		printf("%010lu", y2 % num);
-		y1 = y1 + x1;
-		x1 = y1 - x1;
-		y2 = y2 + x2;
-		x2 = y2 - x2;
-	}
-
 	printf("\n");
 	return (0);
 }
