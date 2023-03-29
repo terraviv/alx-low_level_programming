@@ -2,10 +2,10 @@
 #include <stdio.h>
 
 /**
- * print_buffer - prints buffer
- * @b: buffer
- * @size: size
- * Return: void
+ * print_buffer - shows buffer
+ * @b: param 1
+ * @size: param 2
+ * Return: nothing
  */
 
 void print_buffer(char *b, int size)
@@ -23,9 +23,9 @@ void print_buffer(char *b, int size)
 	{
 		x2 = size - x1 < 10 ? size - x1 : 10;
 		printf("%08x: ", x1);
-		for (i = 0; i < 10; i++)
+		for (x3 = 0; x3 < 10; x3++)
 		{
-			if (i < x2)
+			if (x3 < x2)
 				printf("%02x", *(b + x1 + x3));
 			else
 				printf("  ");
