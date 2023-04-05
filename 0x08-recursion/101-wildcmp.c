@@ -12,10 +12,10 @@ if (*s1 == '\0')
 {
 if (*s2 == '*' && *s2 != '\0')
 {
-return (*s2 == '\0'); }
+return (wildcmp(s1, s2 + 1)); }
 else
 {
-return (wildcmp(s1, s2 + 1)); }
+return (*s2 == '\0'); }
 }
 if (*s2 == '*')
 {
