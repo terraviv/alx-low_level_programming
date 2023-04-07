@@ -21,18 +21,19 @@ return (0);
 while (mycounter < argc)
 {
 char *mycheck = argv[mycounter];
-while (*mycheck) {
-    if (!isdigit(*mycheck))
-    {
-        printf("Error\n");
-        return (1);
-    }
-    mycheck++;
+
+while (*mycheck)
+{
+if (!isdigit(*mycheck))
+{
+printf("Error\n");
+return (1); }
+mycheck++;
 }
 sum_of_numbers = sum_of_numbers + atoi(argv[mycounter]);
 mycounter++;
 }
 printf("%d\n", sum_of_numbers);
-return(sum_of_numbers);
+return (sum_of_numbers);
 }
 
