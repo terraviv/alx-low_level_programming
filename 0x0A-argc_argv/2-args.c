@@ -12,7 +12,7 @@ int mycounter = 0;
 
 while (mycounter < argc)
 {
-printf("%s\n", argv[i]);
+printf("%s\n", argv[mycounter]);
 mycounter++; }
 return (0);
 }
