@@ -16,7 +16,7 @@ return (NULL); }
 if (my_array == NULL)
 {
 return (NULL); }
-for (unsigned int j; j < size; j++)
+for (unsigned int j = 0; j < size; j++)
 {
 my_array[j] = c; }
 return (my_array);
