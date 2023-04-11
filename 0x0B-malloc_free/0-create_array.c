@@ -13,12 +13,13 @@ char *my_array = malloc(size * sizeof(char));
 if (size == 0)
 {
 return (NULL); }
-if (my_array == 0)
+if (my_array == NULL)
 {
 return (NULL); }
 for (unsigned int j; j < size; j++)
 {
 my_array[j] = c; }
-return (str);
+return (my_array);
 }
+
 
