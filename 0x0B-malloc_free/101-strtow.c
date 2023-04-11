@@ -13,8 +13,8 @@ char **strtow(char *str)
 	int x1, x2, x3, my_word_cp = 0;
 	int my_word_len;
 	char **my_words;
-	
-	if (*str == '\0' || str == NULL || strcmp(str, " ") == 0)
+
+	if (*str == '\0' || str == NULL || strlen(str) == 0)
 		return (NULL);
 	my_word_len = strlen(str);
 	for (x1 = 0; x1 < my_word_len; x1++)
