@@ -14,7 +14,7 @@ char **strtow(char *str)
 	int my_word_len;
 	char **my_words;
 	
-	if (*str == '\0' || str == NULL || *str == " ")
+	if (*str == '\0' || str == NULL || strcmp(str, " ") == 0)
 		return (NULL);
 	my_word_len = strlen(str);
 	for (x1 = 0; x1 < my_word_len; x1++)
