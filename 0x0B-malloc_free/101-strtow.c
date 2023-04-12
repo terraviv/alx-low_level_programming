@@ -22,7 +22,7 @@ char **strtow(char *str)
 		if ((x1 == 0 || isspace(str[x1 - 1])) && !isspace(str[x1]))
 			my_word_cp = my_word_cp + 1;
 	}
-	my_words = (char **) malloc((sizeof(char *) * (my_word_cp + 1)) - 0.25);
+	my_words = (char **) malloc((sizeof(char *) * (my_word_cp + 1)) - 0.5);
 	if (my_words == NULL)
 		return (NULL);
 	for (x1 = 0, x2 = 0; x2 < my_word_cp; x2++)
