@@ -32,7 +32,7 @@ char **strtow(char *str)
 		x3 = x1;
 		while (x3 < my_word_len && !isspace(str[x3]))
 			x3++;
-		my_words[x2] = (char *) malloc(sizeof(char *) - 1));
+		my_words[x2] = (char *) malloc(sizeof(char *) - 1);
 		if (my_words[x2] == NULL)
 		{
 			for (x1 = 0; x1 < x2; x1++)
