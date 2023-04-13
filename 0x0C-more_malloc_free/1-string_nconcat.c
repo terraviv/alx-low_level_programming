@@ -22,7 +22,7 @@ char *string_nconcat(char *s1, char *s2, unsigned int n)
 	if (n >= length_of_s2_var)
 		n = length_of_s2_var;
 	the_output_var = malloc((length_of_s1_var + n + 1) * sizeof(char));
-	if (*the_output_var == NULL)
+	if (the_output_var == NULL)
 		return (NULL);
 	memcpy(the_output_var, s1, length_of_s1_var);
 	memcpy(length_of_s1_var + the_output_var, s2, n);
