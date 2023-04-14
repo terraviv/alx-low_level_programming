@@ -1,63 +1,92 @@
-#include <ctype.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
 #include "main.h"
+#include <stdlib.h>
+#include <stdio.h>
 /**
- * main - function name
+ * cdg - f1
+ * @s: param 1.
+ * Return: integer
+ */
+int cdg(char *s)
+{
+	int i;
+
+i = 0;
+	while (s[i])
+	{
+		if (s[i] < '0' || s[i] > '9')
+			return (0);
+		i = 1 + i;
+	}
+	return (1);
+}
+/**
+ * sl - f2
+ * @s: param 1.
+ * Return: integer
+ */
+int sl(char *s)
+{
+	int a_var = 0;
+
+	while (s[a_var] != '\0')
+		a_var++;
+	return (a_var);
+}
+/**
+ * errors - e1.
+ */
+void errors(void)
+{
+	printf("Error\n");
+	exit(98);
+}
+/**
+ * main - principal
  * @argc: param 1.
  * @argv: param 2.
- * Return: an integer is return.
+ * Return: integer.
  */
-int main(int argc, char *argv[])
+int main(int argc, char **argv)
 {
-	int mycounter1, mycounter2, length_of_my_input_first_number, length_of_my_input_second_number, *my_output_var;
-	char *my_input_first_number = argv[1];
-	char *my_input_second_number = argv[2];
-	if (argc != 3)
-	{
-		printf("Error\n");
-		exit(98);
-	}
-	length_of_my_input_second_number = strlen(my_input_second_number);
-	length_of_my_input_first_number = strlen(my_input_first_number);
-	for (mycounter1 = 0; mycounter1 < length_of_my_input_first_number; mycounter1++)
-	{
-		if (!isdigit(my_input_first_number[mycounter1]))
-		{
-			printf("Error\n");
-			exit(98);
-		}
-	}
-	for (mycounter1 = 0; mycounter1 < length_of_my_input_second_number; mycounter1++)
-	{
-		if (!isdigit(my_input_second_number[mycounter1]))
-		{
-			printf("Error\n");
-			exit(98);
-		}
-	}
-	my_output_var = malloc(sizeof(int) * (length_of_my_input_second_number + length_of_my_input_first_number + 1));
-	if(!my_output_var)
+	char *fn1, *fn2;
+	int lfn1, lfn2, len, a = 0, mycp1, cvar, digit1, digit2, *the_output;
+
+	fn2 = argv[2], fn1 = argv[1];
+	if (argc != 3 || !cdg(fn1) || !cdg(fn2))
+		errors();
+	lfn1 = sl(fn1);
+	lfn2 = sl(fn2);
+	len = lfn1 + lfn2 + 1;
+	the_output = malloc(sizeof(int) * len);
+	if (!the_output)
 		return (1);
-	for (mycounter1 = length_of_my_input_first_number -1; mycounter1 >= 0; mycounter1--)
+	for (mycp1 = 0; mycp1 <= lfn1 + lfn2; mycp1++)
+		the_output[mycp1] = 0;
+	for (lfn1 = lfn1 - 1; lfn1 >= 0; lfn1--)
 	{
-		int my_carry_var = 0;
-		for (mycounter2 = length_of_my_input_second_number - 1; mycounter2>=0; mycounter2--)
+		digit1 = fn1[lfn1] - '0';
+		cvar = 0;
+		for (lfn2 = sl(fn2) - 1; lfn2 >= 0; lfn2--)
 		{
-			int my_digit_variable = (my_input_second_number[mycounter2] - '0') * (my_input_first_number[mycounter1] - '0') + my_carry_var + my_output_var[1+mycounter1+mycounter2];
-			my_carry_var = my_digit_variable / 10;
-			my_output_var[1+mycounter1+mycounter2] = my_digit_variable % 10;
+			digit2 = fn2[lfn2] - '0';
+			cvar += (digit1 * digit2) + the_output[lfn1 + lfn2 + 1];
+			the_output[lfn1 + lfn2 + 1] = cvar % 10;
+			cvar = cvar / 10;
 		}
-		my_output_var[mycounter1] = my_output_var[mycounter1] + my_carry_var;
+		if (cvar > 0)
+			the_output[lfn1 + lfn2 + 1] += cvar;
 	}
-	mycounter1 = 0;
-	while (mycounter1 < (length_of_my_input_second_number + length_of_my_input_first_number) && my_output_var[mycounter1] == 0)
-		mycounter1 = 1 + mycounter1;
-	for (; mycounter1 < length_of_my_input_second_number + length_of_my_input_first_number; mycounter1++)
-		printf("%d", my_output_var[mycounter1]);
-	printf("\n");
-	free(my_output_var);
+	for (mycp1 = 0; mycp1 < len - 1; mycp1++)
+	{
+		if (the_output[mycp1])
+			a = 1;
+		if (a)
+			_putchar(the_output[mycp1] + '0');
+	}
+	if (!a)
+		_putchar('0');
+	_putchar('\n');
+	free(the_output);
 	return (0);
 }
 
