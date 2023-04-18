@@ -3,15 +3,15 @@
 #include "dog.h"
 /**
  * print_dog - f1
- * @infos: pa1
+ * @d: pa1
  * Return: nothing
  */
-void print_dog(struct dog *infos)
+void print_dog(struct dog *d)
 {
-	if (infos == NULL)
+	if (d == NULL)
 		return;
-	printf("Name: %s\n", (infos->name == NULL) ? "(nil)" : infos->name);
-	printf("Age: %f\n", infos->age);
-	printf("Owner: %s\n", (infos->owner == NULL) ? "(nil)" : infos->owner);
+	printf("Name: %s\n", (d->name == NULL) ? "(nil)" : d->name);
+	printf("Age: %f\n", d->age);
+	printf("Owner: %s\n", (d->owner == NULL) ? "(nil)" : d->owner);
 }
 
