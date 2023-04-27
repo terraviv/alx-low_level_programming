@@ -8,24 +8,22 @@
 list_t *add_node_end(list_t **head, const char *str)
 {
 list_t *my_mode, *var2;
-
+var2  = *head;
+unsigned int len;
+len = 0;
+while (str[len])
+len = 1 + len;
 my_mode = malloc(sizeof(list_t));
 if (my_mode == NULL)
 return (NULL);
 my_mode->str = strdup(str);
-if (my_mode->str)
-{
-free(my_mode);
-return (NULL);
-}
-my_mode->len = strlen(str);
+my_mode->len = len;
 my_mode->next = NULL;
 if (*head == NULL)
 {
 *head = my_mode;
 return (my_mode);
 }
-var2  = *head;
 while (var2->next)
 var2 = var2->next;
 var2->next = my_mode;
