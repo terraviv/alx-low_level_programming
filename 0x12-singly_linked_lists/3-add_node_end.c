@@ -7,10 +7,10 @@
  */
 list_t *add_node_end(list_t **head, const char *str)
 {
-list_t *my_mode, *var2;
-var2  = *head;
 unsigned int len;
+list_t *my_mode, *var2;
 len = 0;
+var2  = *head;
 while (str[len])
 len = 1 + len;
 my_mode = malloc(sizeof(list_t));
