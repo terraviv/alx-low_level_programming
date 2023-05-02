@@ -1,27 +1,25 @@
 #include "lists.h"
-#include <stdint.h>
 /**
- * print_listint_safe - yt
- * @head: hheek
- * Return: qmqsmspz
+ * print_listint_safe - zerd
+ * @head: omyrddddq
+ * Return: w4
  */
 size_t print_listint_safe(const listint_t *head)
 {
-	int taille_bq = 0;
-	const listint_t *voxa = head;
-	const listint_t *oozm = NULL;
+size_t horloge_variable;
+const listint_t *ninja_var;
 
-	while (voxa)
-	{
-		printf("[%p] %d\n", (void *)voxa, voxa->n);
-		taille_bq++;
-		oozm = voxa->next;
-		if (oozm != NULL && voxa <= oozm)
-		{
-			printf("-> [%p] %d\n", (void *)(intptr_t)&exit, 98);
-			exit(98);
-		}
-		voxa = oozm;
-	}
-	return (taille_bq);
+horloge_variable = 0;
+while (head)
+{
+ninja_var = head;
+head = head->next;
+horloge_variable = 1 + horloge_variable;
+printf("[%p] %d\n", (void *)ninja_var, ninja_var->n);
+if (ninja_var <= head)
+{
+printf("-> [%p] %d\n", (void *)head, head->n);
+exit(98); } }
+return (horloge_variable);
 }
+
