@@ -18,7 +18,7 @@ horloge_variable = 1 + horloge_variable;
 printf("[%p] %d\n", (void *)ninja_var, ninja_var->n);
 if (ninja_var <= head)
 {
-printf("-> [%p] %d\n", (void *) head, head->n);
+printf("-> [%p] %d\n", (void *)head, head->n);
 exit(98); } }
 return (horloge_variable);
 }
