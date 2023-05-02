@@ -10,6 +10,7 @@ size_t print_listint_safe(const listint_t *head)
 	int taille_bq = 0;
 	const listint_t *voxa = head;
 	const listint_t *oozm = NULL;
+
 	while (voxa)
 	{
 		printf("[%p] %d\n", (void *)voxa, voxa->n);
