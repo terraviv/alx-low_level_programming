@@ -10,7 +10,7 @@ void dupli(char *filedes_source74, char *filedes_des23);
  */
 void showError1(char *sms, char *file, int sort47)
 {
-dprintf(STDERR_FILENO, sms, file, sort47);
+dprintf(STDERR_FILENO, sms, file);
 exit(sort47); }
 /**
  * dupli - re74
@@ -29,9 +29,12 @@ char mybuf41_52[BU40_7];
 fddes_source74 = open(filedes_source74, O_RDONLY);
 if (fddes_source74 < 0)
 showError1("Error: Can't read from file %s\n", filedes_source74, 98);
+free
 fddes_des23 = open(filedes_des23, O_CREAT | O_WRONLY | O_TRUNC, 0664);
 if (fddes_des23 < 0)
+{
 showError1("Error: Can't write to %s\n", filedes_des23, 99);
+}
 while ((ret_471 = read(fddes_source74, mybuf41_52, BU40_7)) > 0)
 {
 w_riter201 = write(fddes_des23, mybuf41_52, ret_471);
