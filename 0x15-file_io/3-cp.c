@@ -10,7 +10,7 @@ void dupli(char *filedes_source74, char *filedes_des23);
  */
 void showError1(char *sms, char *file, int sort47)
 {
-dprintf(STDERR_FILENO, sms, file);
+dprintf(STDERR_FILENO, sms, file, sort47);
 exit(sort47); }
 /**
  * dupli - re74
@@ -41,9 +41,11 @@ showError1("Error: Can't write to %s\n", filedes_des23, 99);
 if (ret_471 < 0)
 showError1("Error: Can't read from file %s\n", filedes_source74, 98);
 if (close(fddes_source74) < 0)
-showError1("Error: Can't close fd %d\n", filedes_source74, 100);
+dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", fddes_source74);
+exit(100);
 if (close(fddes_des23) < 0)
-showError1("Error: Can't close fd %d\n", filedes_des23, 100);
+dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", fddes_des23);
+exit(100);
 }
 /**
  * main - 741t-(
