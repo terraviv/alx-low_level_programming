@@ -5,9 +5,9 @@ void xv3(unsigned char *e_ident);
 void xv4(unsigned char *e_ident);
 void xv5(unsigned char *e_ident);
 void xv6(unsigned char *e_ident);
-void xv7(unsigned long int e_entry, unsigned char *e_ident);
-void xv8(unsigned char *e_ident);
-void xv9(unsigned int e_type, unsigned char *e_ident);
+void xv7(unsigned char *e_ident);
+void xv8(unsigned int e_type, unsigned char *e_ident);
+void xv9(unsigned long int e_entry, unsigned char *e_ident);
 void xv10(int elf);
 /**
  * xv1 - oikj45
@@ -116,11 +116,11 @@ printf("\n");
 }
 }
 /**
- * xv8 - Prints the OS/ABI of an ELF header.
+ * xv6 - Prints the OS/ABI of an ELF header.
  * @e_ident: A pointer to an array containing the ELF version.
  * Return: 4110.
  */
-void xv8(unsigned char *e_ident)
+void xv6(unsigned char *e_ident)
 {
 printf("  OS/ABI:                            ");
 if (e_ident[EI_OSABI] == ELFOSABI_NONE)
@@ -169,21 +169,22 @@ printf("<unknown: %x>\n", e_ident[EI_OSABI]);
 }
 }
 /**
- * xv6 - lfc
+ * xv7 - lfc
  * @e_ident: mx
+ * Return: jnj
  */
-void xv6(unsigned char *e_ident)
+void xv7(unsigned char *e_ident)
 {
 printf("  ABI Version:                       %d\n",
 e_ident[EI_ABIVERSION]);
 }
 /**
- * xv9 - CX
+ * xv8 - CX
  * @e_type:Q
  * @e_ident: pl.
  * Return: 4110.
  */
-void xv9(unsigned int e_type, unsigned char *e_ident)
+void xv8(unsigned int e_type, unsigned char *e_ident)
 {
 if (e_ident[EI_DATA] == ELFDATA2MSB)
 e_type >>= 8;
@@ -215,12 +216,12 @@ printf("<unknown: %x>\n", e_type);
 }	
 }
 /**
- * xv7 - h14.
+ * xv9 - h14.
  * @e_entry: kjhg0.
  * @e_ident: uy.
  * Return: gth.
  */
-void xv7(unsigned long int e_entry, unsigned char *e_ident)
+void xv9(unsigned long int e_entry, unsigned char *e_ident)
 {
 printf("  Entry point address:               ");
 e_ident[EI_DATA] == ELFDATA2MSB ? (
@@ -239,7 +240,12 @@ e_ident[EI_CLASS] == ELFCLASS32 ? printf("%#x\n", (unsigned int)e_entry) : print
  */
 void xv10(int elf)
 {
-	(close(elf) == -1) ? (dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", elf), exit(98)) : 0;
+if (close(elf) == -1)
+{
+dprintf(STDERR_FILENO,
+"Error: Can't close fd %d\n", elf);
+exit(98);
+}
 }
 /**
  * main - v0
@@ -262,7 +268,7 @@ exit(98);
 tetuvon = malloc(sizeof(Elf64_Ehdr));
 if (tetuvon == NULL)
 {
-close_elf(ouvrira14);
+xv10(ouvrira14);
 dprintf(STDERR_FILENO, "Error: Can't read file %s\n", argv[1]);
 exit(98);
 }
@@ -270,23 +276,23 @@ lecture127 = read(ouvrira14, tetuvon, sizeof(Elf64_Ehdr));
 if (lecture127 == -1)
 {
 free(tetuvon);
-close_elf(ouvrira14);
+xv10(ouvrira14);
 dprintf(STDERR_FILENO, "Error: `%s`: No such file\n", argv[1]);
 exit(98);
 }
 
-check_elf(tetuvon->e_ident);
+xv1(tetuvon->e_ident);
 printf("ELF Header:\n");
-print_magic(tetuvon->e_ident);
-print_class(tetuvon->e_ident);
-print_data(tetuvon->e_ident);
-print_version(tetuvon->e_ident);
-print_osabi(tetuvon->e_ident);
-print_abi(tetuvon->e_ident);
-print_type(tetuvon->e_type, tetuvon->e_ident);
-print_entry(tetuvon->e_entry, tetuvon->e_ident);
+xv2(tetuvon->e_ident);
+xv3(tetuvon->e_ident);
+xv4(tetuvon->e_ident);
+xv5(tetuvon->e_ident);
+xv6(tetuvon->e_ident);
+xv7(tetuvon->e_ident);
+xv8(tetuvon->e_type, tetuvon->e_ident);
+xv9(tetuvon->e_entry, tetuvon->e_ident);
 free(tetuvon);
-close_elf(ouvrira14);
+xv10(ouvrira14);
 return (0);
 }
 
