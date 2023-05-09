@@ -1,69 +1,88 @@
 #include "main.h"
-void showError1(char *sms, char *file, int sort47);
-void dupli(char *filedes_source74, char *filedes_des23);
+char *render_bufy(char *file);
+void ferme10_fu(int fd);
 /**
- * showError1 - n77h47
- * @sms: 74ol
- * @file: 74ol
- * @sort47: zu0
+ * render_bufy - nh47
+ * @file: 7400
  * Return: ukilmza
  */
-void showError1(char *sms, char *file, int sort47)
+char *render_bufy(char *file)
 {
-dprintf(STDERR_FILENO, sms, file);
-exit(sort47); }
-/**
- * dupli - re74
- * @filedes_source74: pa
- * @filedes_des23: pa
- * Return: zquhbv
- */
-void dupli(char *filedes_source74, char *filedes_des23)
-{
-int fddes_source74;
-int fddes_des23;
-int ret_471;
-int w_riter201;
-char mybuf41_52[BU40_7];
+char *mybuf41_52;
 
-fddes_source74 = open(filedes_source74, O_RDONLY);
-if (fddes_source74 < 0)
-showError1("Error: Can't read from file %s\n", filedes_source74, 98);
-free
-fddes_des23 = open(filedes_des23, O_CREAT | O_WRONLY | O_TRUNC, 0664);
-if (fddes_des23 < 0)
+mybuf41_52 = malloc(sizeof(char) * 1024);
+
+if (!mybuf41_52)
 {
-showError1("Error: Can't write to %s\n", filedes_des23, 99);
+dprintf(STDERR_FILENO,
+"Error: Can't write to %s\n", file);
+exit(99);
 }
-while ((ret_471 = read(fddes_source74, mybuf41_52, BU40_7)) > 0)
+return (mybuf41_52);
+}
+
+/**
+ * ferme10_fu - rep25.
+ * @fd: 47471q.
+ */
+void ferme10_fu(int fd)
 {
-w_riter201 = write(fddes_des23, mybuf41_52, ret_471);
-if (w_riter201 < 0)
-showError1("Error: Can't write to %s\n", filedes_des23, 99);
+int c = close(fd);
+if (c == -1)
+{
+dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", fd);
+exit(100);
 }
-if (ret_471 < 0)
-showError1("Error: Can't read from file %s\n", filedes_source74, 98);
-if (close(fddes_source74) < 0)
-dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", fddes_source74);
-exit(100);
-if (close(fddes_des23) < 0)
-dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", fddes_des23);
-exit(100);
 }
 /**
- * main - 741t-(
- * @argc: r'em
- * @argv: 82o_f
- * Return: tyrm.
+ * main - greedg2
+ * @argc: dodo225
+ * @argv: An array of pointers to the arguments.
+ * Return: yurs.
  */
-int main(int argc, char *argv[])
+int main(int argc, char **argv)
 {
+char *mybuf41_52;
+int destway, goatteris;
+int judge1;
+int omp;
+
 if (argc != 3)
 {
 dprintf(STDERR_FILENO, "Usage: cp file_from file_to\n");
 exit(97);
 }
-dupli(argv[1], argv[2]);
+
+mybuf41_52 = render_bufy(argv[2]);
+destway = open(argv[1], O_RDONLY);
+omp = read(destway, mybuf41_52, 1024);
+goatteris = open(argv[2], O_CREAT | O_WRONLY | O_TRUNC, 0664);
+
+do {
+if (destway == -1 || omp == -1)
+{
+dprintf(STDERR_FILENO,
+"Error: Can't read from file %s\n", argv[1]);
+free(mybuf41_52);
+exit(98);
+}
+
+judge1 = write(goatteris, mybuf41_52, omp);
+if (goatteris == -1 || judge1 == -1)
+{
+dprintf(STDERR_FILENO,
+"Error: Can't write to %s\n", argv[2]);
+free(mybuf41_52);
+exit(99);
+}
+
+omp = read(destway, mybuf41_52, 1024);
+goatteris = open(argv[2], O_WRONLY | O_APPEND);
+
+} while (omp > 0);
+free(mybuf41_52);
+ferme10_fu(destway);
+ferme10_fu(goatteris);
 return (0);
 }
 
