@@ -17,7 +17,7 @@ void xv10(int elf);
 void xv1(unsigned char *e_ident)
 {
 int index = 0;
-while (index < 4) 
+while (index < 4)
 {
 if (e_ident[index] != 127 &&
 e_ident[index] != 'E' &&
@@ -27,9 +27,7 @@ e_ident[index] != 'F')
 dprintf(STDERR_FILENO, "Error: Not an ELF file\n");
 exit(98);
 }
-index++;
-}
-}
+index++; } }
 /**
  * xv2 - f4
  * @e_ident: fd4
@@ -39,7 +37,7 @@ void xv2(unsigned char *e_ident)
 {
 int index = 0;
 printf("  Magic:   ");
-while (index < EI_NIDENT) 
+while (index < EI_NIDENT)
 {
 printf("%02x", e_ident[index]);
 
@@ -58,19 +56,18 @@ index++;
 void xv3(unsigned char *e_ident)
 {
 printf("  Class:                             ");
-if (e_ident[EI_CLASS] == ELFCLASSNONE) 
+if (e_ident[EI_CLASS] == ELFCLASSNONE)
 {
-printf("none\n");
-} else if (e_ident[EI_CLASS] == ELFCLASS32) 
+printf("none\n"); }
+else if (e_ident[EI_CLASS] == ELFCLASS32)
 {
-printf("ELF32\n");
-} else if (e_ident[EI_CLASS] == ELFCLASS64) 
+printf("ELF32\n"); }
+else if (e_ident[EI_CLASS] == ELFCLASS64)
 {
-printf("ELF64\n");
-} else 
+printf("ELF64\n"); }
+else
 {
-printf("<unknown: %x>\n", e_ident[EI_CLASS]);
-}
+printf("<unknown: %x>\n", e_ident[EI_CLASS]); }
 }
 /**
  * xv4 - k4
@@ -125,49 +122,40 @@ void xv6(unsigned char *e_ident)
 printf("  OS/ABI:                            ");
 if (e_ident[EI_OSABI] == ELFOSABI_NONE)
 {
-printf("UNIX - System V\n");
-}
+printf("UNIX - System V\n"); }
 else if (e_ident[EI_OSABI] == ELFOSABI_HPUX)
 {
-printf("UNIX - HP-UX\n");
-}
+printf("UNIX - HP-UX\n"); }
 else if (e_ident[EI_OSABI] == ELFOSABI_NETBSD)
 {
 printf("UNIX - NetBSD\n");
 }
 else if (e_ident[EI_OSABI] == ELFOSABI_LINUX)
 {
-printf("UNIX - Linux\n");
-}
+printf("UNIX - Linux\n"); }
 else if (e_ident[EI_OSABI] == ELFOSABI_SOLARIS)
 {
 printf("UNIX - Solaris\n");
 }
 else if (e_ident[EI_OSABI] == ELFOSABI_IRIX)
 {
-printf("UNIX - IRIX\n");
-}
+printf("UNIX - IRIX\n"); }
 else if (e_ident[EI_OSABI] == ELFOSABI_FREEBSD)
 {
-printf("UNIX - FreeBSD\n");
-}
+printf("UNIX - FreeBSD\n"); }
 else if (e_ident[EI_OSABI] == ELFOSABI_TRU64)
 {
 printf("UNIX - TRU64\n");
 }
 else if (e_ident[EI_OSABI] == ELFOSABI_ARM)
 {
-printf("ARM\n");
-}
+printf("ARM\n"); }
 else if (e_ident[EI_OSABI] == ELFOSABI_STANDALONE)
 {
-printf("Standalone App\n");
-}
+printf("Standalone App\n"); }
 else
 {
-printf("<unknown: %x>\n", e_ident[EI_OSABI]);
-}
-}
+printf("<unknown: %x>\n", e_ident[EI_OSABI]); } }
 /**
  * xv7 - lfc
  * @e_ident: mx
@@ -213,7 +201,7 @@ printf("CORE (Core file)\n");
 else
 {
 printf("<unknown: %x>\n", e_type);
-}	
+}
 }
 /**
  * xv9 - h14.
@@ -224,14 +212,15 @@ printf("<unknown: %x>\n", e_type);
 void xv9(unsigned long int e_entry, unsigned char *e_ident)
 {
 printf("  Entry point address:               ");
-e_ident[EI_DATA] == ELFDATA2MSB ? (
-e_entry = ((e_entry << 8) & 0xFF00FF00) |
-((e_entry >> 8) & 0xFF00FF),
+e_ident[EI_DATA] == ELFDATA2MSB ?
+(e_entry = ((e_entry << 8) & 0xFF00FF00) | ((e_entry >> 8) & 0xFF00FF),
 e_entry = (e_entry << 16) | (e_entry >> 16),
-e_ident[EI_CLASS] == ELFCLASS32 ? printf("%#x\n", (unsigned int)e_entry) : printf("%#lx\n", e_entry)
-) : (
-e_ident[EI_CLASS] == ELFCLASS32 ? printf("%#x\n", (unsigned int)e_entry) : printf("%#lx\n", e_entry)
-);
+e_ident[EI_CLASS] == ELFCLASS32 ?
+printf("%#x\n", (unsigned int)e_entry) :
+printf("%#lx\n", e_entry)) :
+(e_ident[EI_CLASS] == ELFCLASS32 ?
+printf("%#x\n", (unsigned int)e_entry) :
+printf("%#lx\n", e_entry));
 }
 /**
  * xv10 - op1.
@@ -278,9 +267,7 @@ if (lecture127 == -1)
 free(tetuvon);
 xv10(ouvrira14);
 dprintf(STDERR_FILENO, "Error: `%s`: No such file\n", argv[1]);
-exit(98);
-}
-
+exit(98); }
 xv1(tetuvon->e_ident);
 printf("ELF Header:\n");
 xv2(tetuvon->e_ident);
